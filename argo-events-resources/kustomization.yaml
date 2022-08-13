@@ -4,5 +4,6 @@ kind: Kustomization
 resources:
 - sensor.yaml
 - eventsource.yaml
+- github-source.yaml
 
 namespace: argo-events
