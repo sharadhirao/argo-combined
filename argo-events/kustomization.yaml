@@ -3,5 +3,6 @@ kind: Kustomization
 
 resources:
   - ./cluster-install
+  - ./argo-event-resources
 
 namespace: argo-events
