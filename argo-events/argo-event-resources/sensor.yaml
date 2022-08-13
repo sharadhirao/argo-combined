@@ -1,0 +1,47 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Sensor
+metadata:
+  name: webhook
+spec:
+  template:
+    serviceAccountName: operate-workflow-sa
+  dependencies:
+    - name: test-dep
+      eventSourceName: webhook
+      eventName: example
+  triggers:
+    - template:
+        name: webhook-workflow-trigger
+        k8s:
+          operation: create
+          source:
+            resource:
+              apiVersion: argoproj.io/v1alpha1
+              kind: Workflow
+              metadata:
+                generateName: opa-test-
+                namespace: argo
+              spec:
+                entrypoint: volumes-pvc-example
+                volumeClaimTemplates:
+                - metadata:
+                    name: workdir
+                  spec:
+                    accessModes: [ "ReadWriteOnce" ]
+                    resources:
+                      requests:
+                        storage: 1Gi
+
+                templates:
+                - name: volumes-pvc-example
+                  dag:
+                    tasks:
+                    - name: sync-pipeline
+                      template: sync-pipeline
+                
+                - name: sync-pipeline
+                  container:  
+                    image: ubuntu
+                    command: [sh, -c]
+                    args: ["echo Tests passed"]
+                
