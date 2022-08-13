@@ -3,7 +3,5 @@ kind: Kustomization
 
 resources:
 - eventbus.yaml
-- sensor.yaml
-- eventsource.yaml
 
 namespace: argo-events
