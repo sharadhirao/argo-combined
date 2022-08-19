@@ -10,28 +10,28 @@ default allow = false
 
 allow = true {  
    input.environment == "DEV"         
-   input.sonarqube == "APPORVED"       
+   input.sonarqube == "APPROVED"       
 }
 
 allow = true {   
    input.environment == "QA"              
-   input.sonarqube == "APPORVED" 
-   input.QGtest == "APPORVED"     
+   input.sonarqube == "APPROVED" 
+   input.QGtest == "APPROVED"     
 }
 
 allow = true {   
    input.environment == "Prod"                  
-   input.sonarqube == "APPORVED" 
-   input.QGtest == "APPORVED"
-   input.coverity == "APPORVED"
-   input.blackduck == "APPORVED"      
+   input.sonarqube == "APPROVED" 
+   input.QGtest == "APPROVED"
+   input.coverity == "APPROVED"
+   input.blackduck == "APPROVED"      
 }
 
 allow = true {   
    input.environment == "verify"              
-   input.sonarqube == "APPORVED"  
-   input.QGtest == "APPORVED"
-   input.coverity == "APPORVED"      
+   input.sonarqube == "APPROVED"  
+   input.QGtest == "APPROVED"
+   input.coverity == "APPROVED"      
 }
 
 # opa eval --data test.rego --input input.json --profile --format=raw 'data.rbac.allow'
