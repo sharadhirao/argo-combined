@@ -1,0 +1,7 @@
+{ 
+    "environment":"dev", 
+    "sonarqube": "APPROVED", 
+    "blackduck": "APPROVED", 
+    "coverity": "APPROVED",
+    "application name": "app-name"
+}
